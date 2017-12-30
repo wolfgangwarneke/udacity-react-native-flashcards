@@ -1,13 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Settings from './components/Settings'
+import DeckLibrary from './components/DeckLibrary'
+import AddDeck from './components/AddDeck'
+import DeckDetail from './components/DeckDetail'
+import Quiz from './components/Quiz'
+import AddCard from './components/AddCard'
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <DeckLibrary />
+        <AddDeck />
+        <Settings />
+        <DeckDetail />
+        <Quiz />
+        <AddCard />
       </View>
     );
   }
