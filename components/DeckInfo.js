@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
-export default function DeckInfo ({deck, onPress}) {
+export default function DeckInfo ({deck, newPress}) {
   if (!deck) deck = {}
   const title = deck.title || "Title not found"
   const questionsAmt = deck.questions.length || 0
   return (
-    <TouchableOpacity style={styles.infoCard} onPress={onPress}>
+    <TouchableOpacity style={styles.infoCard} onPress={newPress}>
       <Text>{title}</Text>
       <Text>{questionsAmt} {questionsAmt === 1 ? "question" : "questions"}</Text>
     </TouchableOpacity>
