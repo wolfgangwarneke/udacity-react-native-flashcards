@@ -1,21 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
+import { receiveDecks } from '../actions'
 
 import DeckInfo from './DeckInfo'
 
-export default class DeckLibrary extends React.Component {
-  state = {
-    decks: {}
-  }
-
+class DeckLibrary extends React.Component {
   componentDidMount() {
+    const { dispatch } = this.props
+
     const allDecks = getDecks()
-    this.setState((decks) => {return {decks: allDecks}})
+    dispatch(receiveDecks(allDecks))
   }
 
   render() {
-    const { decks } = this.state
+    const decks = this.props.decks || {}
 
     return (
       <View style={styles.container}>
@@ -26,7 +26,12 @@ export default class DeckLibrary extends React.Component {
             )}
         ><Text>Go to Deck Detail Nav</Text></TouchableOpacity>
         {Object.keys(decks).map((key) => (
-          <DeckInfo key={decks[key].title} deck={decks[key]} />
+          <DeckInfo key={decks[key].title} deck={decks[key]}
+            onPress={() => this.props.navigation.navigate(
+              'DeckDetail',
+              { detailId: decks[key].title }
+            )}
+           />
         ))}
       </View>
     );
@@ -41,3 +46,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+function mapStateToProps (state) {
+  return {
+    decks: state.decks
+  }
+}
+export default connect(
+  mapStateToProps,
+)(DeckLibrary)

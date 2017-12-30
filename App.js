@@ -1,7 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
 
 import Settings from './components/Settings'
 import DeckLibrary from './components/DeckLibrary'
@@ -106,16 +110,11 @@ const MainNavigator = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <MainNavigator />
-      </View>
-    );
+      <Provider store={createStore(reducer)}>
+        <View style={{flex: 1}}>
+          <MainNavigator />
+        </View>
+      </Provider>
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
