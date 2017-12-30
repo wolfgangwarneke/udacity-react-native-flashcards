@@ -1,11 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux'
+import { addDeck } from '../actions'
 
-export default class AddDeck extends React.Component {
+class AddDeck extends React.Component {
+  state = {
+    titleText: ''
+  }
   render() {
+    const { dispatch } = this.props
+    const newDeck = {"title": "WOW NEW DECK", "questions": []}
+
     return (
       <View style={styles.container}>
         <Text>This will be the form to create a new deck.</Text>
+        <TouchableOpacity onPress={() => dispatch(addDeck(newDeck))}>
+          <Text>NEW DECK NOW!</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -19,3 +30,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default connect()(AddDeck)

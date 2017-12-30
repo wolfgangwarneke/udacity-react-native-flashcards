@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
+import { fadedOrange } from '../utils/colors'
 
 class DeckDetail extends React.Component {
   render() {
@@ -18,7 +19,7 @@ class DeckDetail extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f90',
+    backgroundColor: fadedOrange,
     alignItems: 'center',
     justifyContent: 'center',
   },

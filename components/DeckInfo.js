@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { fadedOrange, orange } from '../utils/colors'
 
 export default function DeckInfo ({deck, onPress}) {
   if (!deck) deck = {}
@@ -16,8 +17,10 @@ export default function DeckInfo ({deck, onPress}) {
 const styles = StyleSheet.create({
   infoCard: {
     width: 200,
-    borderColor: '#ff2288',
+    backgroundColor: orange,
+    borderColor: fadedOrange,
     borderWidth: 5,
-    marginTop: 20
+    marginTop: 20,
+    padding: 10
   }
 })
