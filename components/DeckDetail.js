@@ -18,7 +18,7 @@ class DeckDetail extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f90',
     alignItems: 'center',
     justifyContent: 'center',
   },

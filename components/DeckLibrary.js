@@ -29,10 +29,14 @@ class DeckLibrary extends React.Component {
         {Object.keys(decks).map((key) => (
           <DeckInfo key={decks[key].title} deck={decks[key]}
             newPress={() => dispatch(setDetailDeck(decks[key].title))}
-            onPress={() => this.props.navigation.navigate(
-              'DeckDetail',
-              { detailId: decks[key].title }
-            )}
+            onPress={() => {
+                dispatch(setDetailDeck(decks[key].title))
+                this.props.navigation.navigate(
+                  'DeckDetail',
+                  { detailId: decks[key].title }
+                )
+              }
+            }
            />
         ))}
       </View>
