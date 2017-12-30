@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK, SET_DETAIL_DECK } from '../actions'
+import { RECEIVE_DECKS, ADD_DECK, SET_DETAIL_DECK, ADD_CARD } from '../actions'
 
 function decks (state = {}, action) {
   switch (action.type) {
@@ -21,6 +21,22 @@ function decks (state = {}, action) {
       return {
         ...state,
         detailDeck: action.title
+      }
+    case ADD_CARD :
+      // must unpack state multiple times as per
+      // https://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
+      return {
+        ...state,
+        decks : {
+          ...state.decks,
+          [action.deck] : {
+            ...state.decks[action.deck],
+            questions : [
+                ...state.decks[action.deck].questions,
+                action.card
+            ]
+          }
+        }
       }
     default :
       return state
