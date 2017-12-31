@@ -2,15 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 import { fadedOrange } from '../utils/colors'
+import DeckInfo from './DeckInfo'
 
 class DeckDetail extends React.Component {
   render() {
     const { deck } = this.props
     return (
       <View style={styles.container}>
-        <Text>This will be the detail info view for the deck.</Text>
-        <Text>The deck is...</Text>
-        <Text>{JSON.stringify(deck)}</Text>
+        <DeckInfo deck={deck} />
       </View>
     );
   }
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   return {
-    deck: state.detailDeck
+    deck: state.decks[state.detailDeck]
   }
 }
 export default connect(
