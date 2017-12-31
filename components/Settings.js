@@ -1,11 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { connect } from 'react-redux'
+import { StyleSheet, Text, View } from 'react-native'
+import { resetDecks } from '../actions'
+import { deleteDecks } from '../utils/api'
 
-export default class Settings extends React.Component {
+class Settings extends React.Component {
+  resetApp = () => {
+    const { dispatch } = this.props
+    deleteDecks()
+      .then(dispatch(resetDecks()))
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text>This will be the settings view</Text>
+        <Text style={{fontSize: 30}} onPress={this.resetApp}>DELETE ALL THE DECKS</Text>
       </View>
     );
   }
@@ -19,3 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default connect()(Settings)

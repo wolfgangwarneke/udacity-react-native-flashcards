@@ -2,15 +2,28 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
+import { submitCard } from '../utils/api'
 
 class AddCard extends React.Component {
   state = {
     questionText: '',
     answerText: ''
   }
+  submit = () => {
+    //alert("from addcard comp... " + JSON.stringify(this.props.decks))
+    const detailDeck = this.props.decks[this.props.detailDeck]
+    const newCard = {"question": this.state.questionText, "answer": this.state.answerText}
+
+    // update Redux
+    this.props.dispatch(addCard(newCard, detailDeck))
+
+    this.setState({questionText: '', answerText: ''})
+
+    // Save to 'DB'
+    submitCard(newCard, detailDeck)
+  }
   render() {
     const { dispatch, detailDeck } = this.props
-    const newCard = {"question": this.state.questionText, "answer": this.state.answerText}
 
     return (
       <View style={styles.container}>
@@ -19,15 +32,17 @@ class AddCard extends React.Component {
         <TextInput
           style={{height: 80, width: 300, backgroundColor: '#ff9999', fontSize: 50}}
           placeholder="New title"
-          onChangeText={(titleText) => this.setState({titleText})}
+          value={this.state.questionText}
+          onChangeText={(questionText) => this.setState({questionText})}
         />
         <Text>ANSWER</Text>
         <TextInput
           style={{height: 80, width: 300, backgroundColor: '#ffff44', fontSize: 50}}
           placeholder="New title"
-          onChangeText={(titleText) => this.setState({titleText})}
+          value={this.state.answerText}
+          onChangeText={(answerText) => this.setState({answerText})}
         />
-        <TouchableOpacity onPress={() => dispatch(addCard(newCard, detailDeck))}>
+        <TouchableOpacity onPress={this.submit}>
           <Text>NEW CARD NOW!</Text>
         </TouchableOpacity>
       </View>
@@ -46,7 +61,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   return {
-    detailDeck: state.detailDeck || ""
+    detailDeck: state.detailDeck || "",
+    decks: state.decks || {}
   }
 }
 export default connect(
