@@ -1,17 +1,73 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
 class Quiz extends React.Component {
+  state = {
+    state: "home", // options are home, active, and summary
+    current: 0,
+    correct: 0,
+    history: [] // stores question array indexes to prevent duplicate questions
+  }
+  start = () => {
+    this.setState({
+      state: "active",
+      current: 0,
+      correct: 0,
+      history: []
+    })
+    this.nextQuestion()
+  }
+  nextQuestion = () => {
+    const {questions} = this.props.deck
+    const { history } = this.state
+    if (history.length >= questions.length) {
+      this.setState({state: "summary"})
+      return
+    }
+
+    let index;
+    do {
+      index = Math.floor(Math.random()*questions.length);
+    } while (history.includes(index))
+    //alert(index)
+    this.setState({current: index, history: [...history, index]})
+    //alert(JSON.stringify(this.state))
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>This will be the quiz component.</Text>
-        {this.props.deck.questions.map((question, idx) => (
-          <Text key={idx}>{question.question}</Text>
-        ))}
-      </View>
-    );
+    switch (this.state.state) {
+      case "active":
+        const question = this.props.deck.questions[this.state.current]
+        return (
+          <View style={styles.container}>
+            <Text>{question.question}</Text>
+            <Text>{question.answer}</Text>
+            <TouchableOpacity onPress={this.nextQuestion}>
+              <Text>NEXT</Text>
+            </TouchableOpacity>
+          </View>
+        )
+      case "summary":
+        return (
+          <View style={styles.container}>
+            <Text>You are now finished a quiz.</Text>
+            {this.props.deck.questions.map((question, idx) => (
+              <Text key={idx}>{question.question}</Text>
+            ))}
+          </View>
+        )
+      case "home":
+      default:
+        return (
+          <View style={styles.container}>
+            <Text>Welcome to the quiz.</Text>
+            <TouchableOpacity onPress={this.start}>
+              <Text>START</Text>
+            </TouchableOpacity>
+          </View>
+        )
+    }
   }
 }
 
