@@ -6,9 +6,9 @@ export function getDecks () {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
 }
 
-export function submitDeck ({ deck, key }) {
+export function submitDeck (deck) {
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
-    [key]: deck
+    [deck.title]: deck
   }))
 }
 

@@ -17,11 +17,10 @@ class AddDeck extends React.Component {
     this.setState({titleText: ''})
 
     // Save to 'DB'
-    submitDeck({deck, key: deck.title})
+    submitDeck(deck)
   }
   render() {
     const { dispatch } = this.props
-    //const newDeck = {"title": this.state.titleText, "questions": []}
 
     return (
       <View style={styles.container}>
