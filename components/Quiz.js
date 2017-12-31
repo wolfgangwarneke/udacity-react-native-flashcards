@@ -1,11 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class Quiz extends React.Component {
+class Quiz extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>This will be the quiz component.</Text>
+        {this.props.deck.questions.map((question, idx) => (
+          <Text key={idx}>{question.question}</Text>
+        ))}
       </View>
     );
   }
@@ -19,3 +23,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+function mapStateToProps (state) {
+  return {
+    deck: state.decks[state.detailDeck]
+  }
+}
+export default connect(
+  mapStateToProps,
+)(Quiz)
