@@ -14,32 +14,38 @@ export default class Quiz extends React.Component {
     this.props.nextQuestion(wasCorrect)
   }
   render() {
-    const { question } = this.props
-    if (!this.state.isFlipped) {
-      return (
-        <View style={styles.container}>
-          <Text>{question.question}</Text>
-          <TouchableOpacity onPress={this.flip}>
-            <Text>FLIP</Text>
-          </TouchableOpacity>
-        </View>
-      )
-    } else {
-      return (
-        <View style={styles.container}>
-          <TouchableOpacity onPress={this.flip}>
-            <Text>back to question</Text>
-          </TouchableOpacity>
-          <Text>{question.answer}</Text>
-          <TouchableOpacity onPress={() => this.nextAndFlipBack(true)}>
-            <Text>CORRECT</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.nextAndFlipBack(false)}>
-            <Text>INCORRECT</Text>
-          </TouchableOpacity>
-        </View>
-      )
-    }
+    const { question, questionsTotal, questionOrder } = this.props
+    return (
+      <View style={styles.container}>
+        <Text>
+          Question {questionOrder} of {questionsTotal}
+        </Text>
+        <Text>
+          ({questionsTotal - questionOrder} remaining)
+        </Text>
+        {!this.state.isFlipped ?
+            <View style={styles.container}>
+              <Text>{question.question}</Text>
+              <TouchableOpacity onPress={this.flip}>
+                <Text>FLIP</Text>
+              </TouchableOpacity>
+            </View>
+          :
+            <View style={styles.container}>
+              <TouchableOpacity onPress={this.flip}>
+                <Text>back to question</Text>
+              </TouchableOpacity>
+              <Text>{question.answer}</Text>
+              <TouchableOpacity onPress={() => this.nextAndFlipBack(true)}>
+                <Text>CORRECT</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.nextAndFlipBack(false)}>
+                <Text>INCORRECT</Text>
+              </TouchableOpacity>
+            </View>
+        }
+      </View>
+    )
   }
 }
 

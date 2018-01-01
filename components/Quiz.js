@@ -57,8 +57,15 @@ class Quiz extends React.Component {
     switch (this.state.state) {
       case "active":
         const question = this.props.deck.questions[this.state.current]
+        const questionOrder = this.state.history.length
+        const questionsTotal = this.props.deck.questions.length
         return (
-          <QuizCard question={question} nextQuestion={this.nextQuestion} />
+          <QuizCard
+            question={question}
+            questionOrder={questionOrder}
+            questionsTotal={questionsTotal}
+            nextQuestion={this.nextQuestion}
+          />
         )
       case "summary":
         return (
@@ -71,6 +78,12 @@ class Quiz extends React.Component {
             ))}
             <TouchableOpacity onPress={this.start}>
               <Text>RESTART</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              this.setState({state: "home"})
+              //TODO navigate back to info tab
+            }}>
+              <Text>Back to card detail</Text>
             </TouchableOpacity>
           </View>
         )
