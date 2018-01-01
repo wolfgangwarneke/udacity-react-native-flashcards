@@ -36,9 +36,7 @@ class Quiz extends React.Component {
     do {
       index = Math.floor(Math.random()*questions.length);
     } while (history.includes(index))
-    //alert(index)
     this.setState({current: index, history: [...history, index]})
-    //alert(JSON.stringify(this.state))
   }
   getSummaryMessage = () => {
     const correctAmt = this.state.correct

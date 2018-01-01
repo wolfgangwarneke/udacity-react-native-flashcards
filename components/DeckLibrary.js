@@ -11,8 +11,6 @@ class DeckLibrary extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props
 
-    // const allDecks = getDecks()
-    // dispatch(receiveDecks(allDecks))
     try {
       getDecks()
         .then((decks) => dispatch(receiveDecks(JSON.parse(decks))))
