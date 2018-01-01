@@ -33,7 +33,7 @@ class AddCard extends React.Component {
     // update Redux
     this.props.dispatch(addCard(newCard, detailDeck))
 
-    this.setState({questionText: '', answerText: ''})
+    this.setState({questionText: '', answerText: '', showValidation: false})
 
     // Save to 'DB'
     submitCard(newCard, detailDeck)

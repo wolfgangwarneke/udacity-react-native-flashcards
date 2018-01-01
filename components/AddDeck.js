@@ -23,7 +23,7 @@ class AddDeck extends React.Component {
     // update Redux
     this.props.dispatch(addDeck(deck))
 
-    this.setState({titleText: ''})
+    this.setState({titleText: '', showValidation: false})
 
     // Save to 'DB'
     submitDeck(deck)
