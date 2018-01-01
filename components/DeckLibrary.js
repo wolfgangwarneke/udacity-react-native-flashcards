@@ -62,6 +62,7 @@ class DeckLibrary extends React.Component {
             />
           </Animated.View>
         })}
+        <Text style={{marginBottom: 400}}></Text>
       </ScrollView>
     );
   }
