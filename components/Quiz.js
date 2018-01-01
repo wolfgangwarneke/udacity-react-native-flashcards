@@ -36,7 +36,17 @@ class Quiz extends React.Component {
     this.setState({current: index, history: [...history, index]})
     //alert(JSON.stringify(this.state))
   }
-
+  getSummaryMessage = () => {
+    const correctAmt = this.state.correct
+    const quizLength = this.state.history.length
+    const addS = correctAmt !== 1 ? "s" : ""
+    return `You answered ${correctAmt} out of ${quizLength} question${addS} correctly.`
+  }
+  getSummaryPercentage = () => {
+    const correctAmt = this.state.correct
+    const quizLength = this.state.history.length
+    return (correctAmt/quizLength*100).toFixed(1) + "%"
+  }
   render() {
     switch (this.state.state) {
       case "active":
@@ -48,7 +58,8 @@ class Quiz extends React.Component {
         return (
           <View style={styles.container}>
             <Text>You are now finished a quiz.</Text>
-            <Text>You answered {this.state.correct} questions correctly.</Text>
+            <Text>{this.getSummaryPercentage()}</Text>
+            <Text>{this.getSummaryMessage()}</Text>
             {this.props.deck.questions.map((question, idx) => (
               <Text key={idx}>{question.question}</Text>
             ))}
