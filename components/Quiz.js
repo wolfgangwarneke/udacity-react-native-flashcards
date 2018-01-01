@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
+import { NavigationActions } from 'react-navigation'
 
 class Quiz extends React.Component {
   state = {
@@ -82,6 +83,7 @@ class Quiz extends React.Component {
             <TouchableOpacity onPress={() => {
               this.setState({state: "home"})
               //TODO navigate back to info tab
+              this.props.navigation.dispatch(NavigationActions.back())
             }}>
               <Text>Back to card detail</Text>
             </TouchableOpacity>
