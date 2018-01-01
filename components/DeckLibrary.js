@@ -27,16 +27,17 @@ class DeckLibrary extends React.Component {
     // if no decks, display welcome message
     if (!Object.keys(decks).length) {
       return (
-        <View>
-          <Text style={styles.header}>Quiz Decks</Text>
-          <Welcome />
+        <View style={styles.container}>
+          <Text style={styles.header}>Mobile Flashcards</Text>
+          <Welcome style={styles.message} navigation={this.props.navigation} />
         </View>
       )
     }
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.header}>Quiz Decks</Text>
+        <Text style={styles.header}>Mobile Flashcards</Text>
+        <Text>Your decks...</Text>
         {Object.keys(decks).map((key) => {
           const animatedValue = new Animated.Value(0)
           return <Animated.View key={decks[key].title} style={{transform: [{translateX: animatedValue}]}}>
@@ -74,7 +75,14 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   header: {
+    fontFamily: 'Trebuchet MS',
     fontSize: 40
+  },
+  message: {
+    fontFamily: 'Trebuchet MS',
+    fontSize: 30,
+    left: -55,
+    paddingTop: 16
   }
 });
 

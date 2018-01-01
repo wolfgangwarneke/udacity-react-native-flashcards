@@ -17,19 +17,22 @@ export default function DeckInfo ({deck, onPress, bigMode}) {
 
 const styles = StyleSheet.create({
   infoCard: {
-    width: 200,
+    width: 270,
     backgroundColor: lightBlue,
     borderColor: darkBlue,
     borderWidth: 5,
     marginTop: 20,
-    padding: 10
+    padding: 10,
+    paddingLeft: 20
   },
   infoHeader: {
+    fontFamily: 'Trebuchet MS',
     color: white,
-    fontSize: 40
+    fontSize: 36
   },
   questionText: {
-    paddingLeft: 10
+    fontSize: 20,
+    paddingLeft: 16
   }
 })
 
@@ -44,6 +47,7 @@ const bigStyles = StyleSheet.create({
     padding: 30
   },
   infoHeader: {
+    fontFamily: 'Trebuchet MS',
     color: white,
     fontSize: 60,
     marginBottom: 15
