@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { submitDeck } from '../utils/api'
+import { NavigationActions } from 'react-navigation'
 
 class AddDeck extends React.Component {
   state = {
@@ -18,6 +19,10 @@ class AddDeck extends React.Component {
 
     // Save to 'DB'
     submitDeck(deck)
+
+    // navigate back
+    Keyboard.dismiss()
+    this.props.navigation.dispatch(NavigationActions.back())
   }
   render() {
     const { dispatch } = this.props
