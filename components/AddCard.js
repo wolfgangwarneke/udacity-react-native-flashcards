@@ -16,10 +16,16 @@ import { NavigationActions } from 'react-navigation'
 class AddCard extends React.Component {
   state = {
     questionText: '',
-    answerText: ''
+    answerText: '',
+    showValidation: false
   }
   submit = () => {
-    //alert("from addcard comp... " + JSON.stringify(this.props.decks))
+    // validate, don't sumbit if invalid and show validation message
+    if (!this.state.questionText || !this.state.answerText) {
+      this.setState({showValidation: true})
+      return
+    }
+    
     const detailDeck = this.props.decks[this.props.detailDeck]
     const newCard = {"question": this.state.questionText, "answer": this.state.answerText}
 
@@ -36,10 +42,12 @@ class AddCard extends React.Component {
   }
   render() {
     const { dispatch, detailDeck } = this.props
+    const { showValidation } = this.state
 
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
+          {showValidation && <Text>INVALID PLEASE TYPE SOMETHING</Text>}
           <Text>Add a question to {detailDeck}</Text>
           <Text>QUESTION</Text>
           <TextInput
