@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Animated, Easing } from 'react-native';
+import { View, Animated, Easing, StatusBar } from 'react-native';
+import { Constants } from 'expo'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
 
@@ -15,7 +16,7 @@ import Quiz from './components/Quiz'
 import AddCard from './components/AddCard'
 
 import { setLocalNotification } from './utils/notifications'
-import { darkBlue, lightBlue, blue, grey, lightGrey } from './utils/colors'
+import { darkBlue, lightBlue, blue, grey, lightGrey, paleBlue } from './utils/colors'
 
 const GeneralTabs = TabNavigator({
   DeckLibrary: {
@@ -134,6 +135,9 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
+          <View style={{backgroundColor: paleBlue, height: Constants.statusBarHeight }}>
+            <StatusBar translucent backgroundColor={paleBlue} />
+          </View>
           <MainNavigator />
         </View>
       </Provider>
