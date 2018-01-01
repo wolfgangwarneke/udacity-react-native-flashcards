@@ -18,34 +18,37 @@ export default class Quiz extends React.Component {
     const { question, questionsTotal, questionOrder } = this.props
     return (
       <View style={styles.container}>
-        <Text>
+        <Text style={{fontSize: 20}}>
           Question {questionOrder} of {questionsTotal}
         </Text>
-        <Text>
+        <Text style={{fontSize: 16, fontStyle: 'italic'}}>
           ({questionsTotal - questionOrder} remaining)
         </Text>
         {!this.state.isFlipped ?
             <View style={styles.container}>
-              <Text>{question.question}</Text>
-              <TouchableOpacity onPress={this.flip}>
+              <Text style={styles.qAndA}>{question.question}</Text>
+              <TouchableOpacity style={styles.row} onPress={this.flip}>
                 <FontAwesome name='share' size={30} color={"black"} />
                 <Text>FLIP</Text>
               </TouchableOpacity>
             </View>
           :
             <View style={styles.container}>
-              <TouchableOpacity onPress={this.flip}>
-                <Text>back to question</Text>
+              <TouchableOpacity style={[styles.row, {marginBottom: 25}]} onPress={this.flip}>
+                <FontAwesome name='share' size={30} color={"black"} style={{transform: [{rotate: "180deg"}]}} />
+                <Text>BACK</Text>
               </TouchableOpacity>
-              <Text>{question.answer}</Text>
-              <TouchableOpacity onPress={() => this.nextAndFlipBack(true)}>
-                <FontAwesome name='check' size={30} color={"green"} />
-                <Text>CORRECT</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => this.nextAndFlipBack(false)}>
-                <FontAwesome name='times' size={30} color={"red"} />
-                <Text>INCORRECT</Text>
-              </TouchableOpacity>
+              <Text style={styles.qAndA}>{question.answer}</Text>
+              <View style={styles.row}>
+                <TouchableOpacity style={{marginRight: 10}} onPress={() => this.nextAndFlipBack(true)}>
+                  <FontAwesome style={styles.iconOffset} name='check' size={30} color={"green"} />
+                  <Text>CORRECT</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{marginLeft: 10}} onPress={() => this.nextAndFlipBack(false)}>
+                  <FontAwesome style={styles.iconOffset} name='times' size={30} color={"red"} />
+                  <Text>INCORRECT</Text>
+                </TouchableOpacity>
+              </View>
             </View>
         }
       </View>
@@ -60,4 +63,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  qAndA: {
+    fontSize: 30,
+    marginBottom: 20
+  },
+  iconOffset: {
+    paddingTop: 8,
+    transform: [{ translateX: 25 }]
+  }
 });

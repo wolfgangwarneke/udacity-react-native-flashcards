@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
 import { NavigationActions } from 'react-navigation'
 import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
+import { lightBlue, darkBlue, white } from '../utils/colors'
 import { FontAwesome } from '@expo/vector-icons'
 
 class Quiz extends React.Component {
@@ -73,20 +74,18 @@ class Quiz extends React.Component {
       case "summary":
         return (
           <View style={styles.container}>
-            <Text>You are now finished a quiz.</Text>
-            <Text>{this.getSummaryPercentage()}</Text>
-            <Text>{this.getSummaryMessage()}</Text>
-            {this.props.deck.questions.map((question, idx) => (
-              <Text key={idx}>{question.question}</Text>
-            ))}
-            <TouchableOpacity onPress={this.start}>
-              <Text>RESTART</Text>
+            <Text style={styles.summaryTextTop}>You have now finished the quiz.</Text>
+            <Text style={styles.percentage}>{this.getSummaryPercentage()}</Text>
+            <Text style={styles.summaryTextBottom}>{this.getSummaryMessage()}</Text>
+            <TouchableOpacity style={styles.button} onPress={this.start}>
+              <Text style={styles.buttonText}>RESTART</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
+            <TouchableOpacity style={styles.row} onPress={() => {
               this.setState({state: "home"})
               this.props.navigation.dispatch(NavigationActions.back())
             }}>
-              <Text>Back to card detail</Text>
+              <FontAwesome name='arrow-left' size={30} color={"black"} />
+              <Text style={{paddingLeft: 10}}>Back to card detail</Text>
             </TouchableOpacity>
           </View>
         )
@@ -94,10 +93,12 @@ class Quiz extends React.Component {
       default:
         return (
           <View style={styles.container}>
-            <Text>Welcome to the quiz.</Text>
-            <TouchableOpacity onPress={this.start}>
-              <FontAwesome name='play' size={30} color={"green"} />
-              <Text>START</Text>
+            <Text style={styles.header}>Welcome to the quiz.</Text>
+            <TouchableOpacity style={styles.start} onPress={this.start}>
+              <View>
+                <FontAwesome style={styles.playIcon} name='play' size={30} color={"green"} />
+                <Text>START</Text>
+              </View>
             </TouchableOpacity>
           </View>
         )
@@ -112,6 +113,44 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    fontSize: 30,
+    marginBottom: 20
+  },
+  start: {
+    marginBottom: 100
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  percentage: {
+    padding: 10,
+    fontSize: 90
+  },
+  summaryTextTop: {
+    fontSize: 20
+  },
+  summaryTextBottom: {
+    fontSize: 18
+  },
+  button: {
+    backgroundColor: lightBlue,
+    padding: 18,
+    borderWidth: 4,
+    borderColor: darkBlue,
+    borderRadius: 16,
+    marginTop: 32,
+    marginBottom: 40
+  },
+  buttonText: {
+    color: white,
+    fontSize: 17
+  },
+  playIcon: {
+    transform: [{ translateX: 10 }],
+    paddingBottom: 10
+  }
 });
 
 function mapStateToProps (state) {
