@@ -9,7 +9,11 @@ class DeckDetail extends React.Component {
     const { deck } = this.props
     return (
       <View style={styles.container}>
-        <DeckInfo deck={deck} bigMode={true} />
+        <DeckInfo
+          deck={deck}
+          bigMode={true}
+          onPress={() => this.props.navigation.navigate('Quiz')} 
+        />
       </View>
     );
   }
