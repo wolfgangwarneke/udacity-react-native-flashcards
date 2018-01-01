@@ -6,6 +6,7 @@ import { getDecks } from '../utils/api'
 import { white } from '../utils/colors'
 
 import DeckInfo from './DeckInfo'
+import Welcome from './Welcome'
 
 class DeckLibrary extends React.Component {
   componentDidMount() {
@@ -22,6 +23,16 @@ class DeckLibrary extends React.Component {
   render() {
     const decks = this.props.decks || {}
     const { dispatch } = this.props
+
+    // if no decks, display welcome message
+    if (!Object.keys(decks).length) {
+      return (
+        <View>
+          <Text style={styles.header}>Quiz Decks</Text>
+          <Welcome />
+        </View>
+      )
+    }
 
     return (
       <ScrollView contentContainerStyle={styles.container}>

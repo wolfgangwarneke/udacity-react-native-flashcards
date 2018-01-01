@@ -46,7 +46,7 @@ const GeneralTabs = TabNavigator({
     style: {
       height: 56,
       backgroundColor: darkBlue,
-      shadowColor: 'rgba(0, 0, 0, 1)',
+      shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
         height: 3
