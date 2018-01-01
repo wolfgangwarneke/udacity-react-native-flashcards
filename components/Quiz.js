@@ -3,6 +3,10 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
 import { NavigationActions } from 'react-navigation'
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from '../utils/notifications'
 
 class Quiz extends React.Component {
   state = {
@@ -25,6 +29,8 @@ class Quiz extends React.Component {
     if (wasCorrect) this.setState({correct: (wasCorrect ? correct + 1 : correct)})
     if (history.length >= questions.length) {
       this.setState({state: "summary"})
+      clearLocalNotification()
+        .then(setLocalNotification)
       return
     }
 

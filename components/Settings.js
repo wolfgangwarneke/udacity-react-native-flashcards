@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { StyleSheet, Text, View } from 'react-native'
 import { resetDecks } from '../actions'
 import { deleteDecks } from '../utils/api'
+import { clearLocalNotification } from '../utils/notifications'
 
 class Settings extends React.Component {
   resetApp = () => {
     const { dispatch } = this.props
     deleteDecks()
       .then(dispatch(resetDecks()))
+    clearLocalNotification()
   }
   render() {
     return (
