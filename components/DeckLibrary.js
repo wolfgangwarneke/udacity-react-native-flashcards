@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
 import { receiveDecks, setDetailDeck } from '../actions'
@@ -32,19 +32,30 @@ class DeckLibrary extends React.Component {
               'DeckDetail'
             )}
         ><Text>Go to Deck Detail Nav</Text></TouchableOpacity>
-        {Object.keys(decks).map((key) => (
-          <DeckInfo key={decks[key].title} deck={decks[key]}
-            newPress={() => dispatch(setDetailDeck(decks[key].title))}
-            onPress={() => {
-                dispatch(setDetailDeck(decks[key].title))
-                this.props.navigation.navigate(
-                  'DeckDetail',
-                  { detailId: decks[key].title }
-                )
+        {Object.keys(decks).map((key) => {
+          const animatedValue = new Animated.Value(0)
+          return <Animated.View key={decks[key].title} style={{transform: [{translateX: animatedValue}]}}>
+            <DeckInfo key={decks[key].title} deck={decks[key]}
+              newPress={() => dispatch(setDetailDeck(decks[key].title))}
+              onPress={() => {
+                  Animated.sequence([
+                    Animated.timing(animatedValue, { duration: 400, toValue: -400 })
+                  ]).start(() => {
+                    dispatch(setDetailDeck(decks[key].title))
+                    this.props.navigation.navigate(
+                      'DeckDetail',
+                      { detailId: decks[key].title }
+                    )
+                    Animated.sequence([
+                      Animated.timing(animatedValue, { duration: 500, toValue: -600 }),
+                      Animated.timing(animatedValue, { duration: 100, toValue: 0 })
+                    ]).start()
+                  })
+                }
               }
-            }
-           />
-        ))}
+            />
+          </Animated.View>
+        })}
       </View>
     );
   }

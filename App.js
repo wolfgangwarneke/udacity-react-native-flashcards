@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Animated, Easing } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
 
@@ -105,6 +105,14 @@ const MainNavigator = StackNavigator({
       }
     }
   }
+}, {
+  transitionConfig : () => ({
+  	transitionSpec: {
+  		duration: 0,
+  		timing: Animated.timing,
+  		easing: Easing.step0,
+  	},
+  })
 })
 
 export default class App extends React.Component {
