@@ -17,11 +17,12 @@ class Quiz extends React.Component {
       correct: 0,
       history: []
     })
-    this.nextQuestion()
+    this.nextQuestion(false)
   }
-  nextQuestion = () => {
+  nextQuestion = (wasCorrect) => {
     const {questions} = this.props.deck
-    const { history } = this.state
+    const { history, correct } = this.state
+    if (wasCorrect) this.setState({correct: (wasCorrect ? correct + 1 : correct)})
     if (history.length >= questions.length) {
       this.setState({state: "summary"})
       return
@@ -47,6 +48,7 @@ class Quiz extends React.Component {
         return (
           <View style={styles.container}>
             <Text>You are now finished a quiz.</Text>
+            <Text>You answered {this.state.correct} questions correctly.</Text>
             {this.props.deck.questions.map((question, idx) => (
               <Text key={idx}>{question.question}</Text>
             ))}

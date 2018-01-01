@@ -9,9 +9,9 @@ export default class Quiz extends React.Component {
   flip = () => {
     this.setState({isFlipped: !this.state.isFlipped})
   }
-  nextAndFlipBack = () => {
+  nextAndFlipBack = (wasCorrect) => {
     this.flip()
-    this.props.nextQuestion()
+    this.props.nextQuestion(wasCorrect)
   }
   render() {
     const { question } = this.props
@@ -31,8 +31,11 @@ export default class Quiz extends React.Component {
             <Text>back to question</Text>
           </TouchableOpacity>
           <Text>{question.answer}</Text>
-          <TouchableOpacity onPress={this.nextAndFlipBack}>
-            <Text>NEXT</Text>
+          <TouchableOpacity onPress={() => this.nextAndFlipBack(true)}>
+            <Text>CORRECT</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.nextAndFlipBack(false)}>
+            <Text>INCORRECT</Text>
           </TouchableOpacity>
         </View>
       )
