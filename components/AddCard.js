@@ -1,5 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+  Keyboard,
+  TouchableWithoutFeedback
+} from 'react-native';
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { submitCard } from '../utils/api'
@@ -30,26 +38,28 @@ class AddCard extends React.Component {
     const { dispatch, detailDeck } = this.props
 
     return (
-      <View style={styles.container}>
-        <Text>Add a question to {detailDeck}</Text>
-        <Text>QUESTION</Text>
-        <TextInput
-          style={{height: 80, width: 300, backgroundColor: '#ff9999', fontSize: 50}}
-          placeholder="New title"
-          value={this.state.questionText}
-          onChangeText={(questionText) => this.setState({questionText})}
-        />
-        <Text>ANSWER</Text>
-        <TextInput
-          style={{height: 80, width: 300, backgroundColor: '#ffff44', fontSize: 50}}
-          placeholder="New title"
-          value={this.state.answerText}
-          onChangeText={(answerText) => this.setState({answerText})}
-        />
-        <TouchableOpacity onPress={this.submit}>
-          <Text>NEW CARD NOW!</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Text>Add a question to {detailDeck}</Text>
+          <Text>QUESTION</Text>
+          <TextInput
+            style={{height: 80, width: 300, backgroundColor: '#ff9999', fontSize: 50}}
+            placeholder="New title"
+            value={this.state.questionText}
+            onChangeText={(questionText) => this.setState({questionText})}
+          />
+          <Text>ANSWER</Text>
+          <TextInput
+            style={{height: 80, width: 300, backgroundColor: '#ffff44', fontSize: 50}}
+            placeholder="New title"
+            value={this.state.answerText}
+            onChangeText={(answerText) => this.setState({answerText})}
+          />
+          <TouchableOpacity onPress={this.submit}>
+            <Text>NEW CARD NOW!</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

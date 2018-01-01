@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { submitDeck } from '../utils/api'
@@ -28,18 +28,20 @@ class AddDeck extends React.Component {
     const { dispatch } = this.props
 
     return (
-      <View style={styles.container}>
-        <Text>This will be the form to create a new deck.</Text>
-        <TextInput
-          style={{height: 80, width: 300, backgroundColor: '#ff4400', fontSize: 50}}
-          placeholder="New title"
-          value={this.state.titleText}
-          onChangeText={(titleText) => this.setState({titleText})}
-        />
-        <TouchableOpacity onPress={this.submit}>
-          <Text>NEW DECK NOW!</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Text>This will be the form to create a new deck.</Text>
+          <TextInput
+            style={{height: 80, width: 300, backgroundColor: '#ff4400', fontSize: 50}}
+            placeholder="New title"
+            value={this.state.titleText}
+            onChangeText={(titleText) => this.setState({titleText})}
+          />
+          <TouchableOpacity onPress={this.submit}>
+            <Text>NEW DECK NOW!</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
