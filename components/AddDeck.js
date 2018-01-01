@@ -4,12 +4,20 @@ import { connect } from 'react-redux'
 import { addDeck } from '../actions'
 import { submitDeck } from '../utils/api'
 import { NavigationActions } from 'react-navigation'
+import ValidationMessage from './ValidationMessage'
 
 class AddDeck extends React.Component {
   state = {
-    titleText: ''
+    titleText: '',
+    showValidation: false
   }
   submit = () => {
+    // validate, don't sumbit if invalid and show validation message
+    if (!this.state.titleText) {
+      this.setState({showValidation: true})
+      return
+    }
+
     const deck = {title: this.state.titleText, questions: []}
 
     // update Redux
@@ -30,6 +38,7 @@ class AddDeck extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
+          {this.state.showValidation && <ValidationMessage message="Please give your deck a title." />}
           <Text>This will be the form to create a new deck.</Text>
           <TextInput
             style={{height: 80, width: 300, backgroundColor: '#ff4400', fontSize: 50}}

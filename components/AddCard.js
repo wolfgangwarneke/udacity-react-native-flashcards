@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { submitCard } from '../utils/api'
 import { NavigationActions } from 'react-navigation'
+import ValidationMessage from './ValidationMessage'
 
 class AddCard extends React.Component {
   state = {
@@ -25,7 +26,7 @@ class AddCard extends React.Component {
       this.setState({showValidation: true})
       return
     }
-    
+
     const detailDeck = this.props.decks[this.props.detailDeck]
     const newCard = {"question": this.state.questionText, "answer": this.state.answerText}
 
@@ -47,7 +48,7 @@ class AddCard extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          {showValidation && <Text>INVALID PLEASE TYPE SOMETHING</Text>}
+          {showValidation && <ValidationMessage message="Please fill in both fields." />}
           <Text>Add a question to {detailDeck}</Text>
           <Text>QUESTION</Text>
           <TextInput
