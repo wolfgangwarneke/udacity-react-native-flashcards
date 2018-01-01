@@ -16,8 +16,7 @@ class Quiz extends React.Component {
       current: 0,
       correct: 0,
       history: []
-    })
-    this.nextQuestion(false)
+    }, () => this.nextQuestion(false)) // needs to wait until state is finished updated
   }
   nextQuestion = (wasCorrect) => {
     const {questions} = this.props.deck
@@ -48,6 +47,13 @@ class Quiz extends React.Component {
     return (correctAmt/quizLength*100).toFixed(1) + "%"
   }
   render() {
+    if (this.props.deck.questions.length === 0) {
+      return (
+        <View style={styles.container}>
+          <Text>There are no questions in this deck yet.</Text>
+        </View>
+      )
+    }
     switch (this.state.state) {
       case "active":
         const question = this.props.deck.questions[this.state.current]
@@ -63,6 +69,9 @@ class Quiz extends React.Component {
             {this.props.deck.questions.map((question, idx) => (
               <Text key={idx}>{question.question}</Text>
             ))}
+            <TouchableOpacity onPress={this.start}>
+              <Text>RESTART</Text>
+            </TouchableOpacity>
           </View>
         )
       case "home":
