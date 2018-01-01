@@ -10,7 +10,7 @@ export default function DeckInfo ({deck, onPress, bigMode}) {
   return (
     <TouchableOpacity style={eitherStyles.infoCard} onPress={onPress}>
       <Text style={eitherStyles.infoHeader}>{title}</Text>
-      <Text>{questionsAmt} {questionsAmt === 1 ? "question" : "questions"}</Text>
+      <Text style={eitherStyles.questionText}>{questionsAmt} {questionsAmt === 1 ? "question" : "questions"}</Text>
     </TouchableOpacity>
   )
 }
@@ -27,20 +27,28 @@ const styles = StyleSheet.create({
   infoHeader: {
     color: white,
     fontSize: 40
+  },
+  questionText: {
+    paddingLeft: 10
   }
 })
 
 const bigStyles = StyleSheet.create({
   infoCard: {
     width: 400,
+    height: 400,
+    alignItems: 'center',
     backgroundColor: lightBlue,
     borderColor: darkBlue,
     borderWidth: 15,
-    marginTop: 20,
     padding: 30
   },
   infoHeader: {
     color: white,
-    fontSize: 60
+    fontSize: 60,
+    marginBottom: 15
+  },
+  questionText: {
+    fontSize: 28
   }
 })
