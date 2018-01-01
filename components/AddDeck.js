@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard, Touchabl
 import { connect } from 'react-redux'
 import { addDeck, setDetailDeck } from '../actions'
 import { submitDeck } from '../utils/api'
+import { lightGrey, darkBlue, lightBlue } from '../utils/colors'
 import { NavigationActions } from 'react-navigation'
 import ValidationMessage from './ValidationMessage'
 
@@ -42,15 +43,16 @@ class AddDeck extends React.Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           {this.state.showValidation && <ValidationMessage message="Please give your deck a title." />}
-          <Text>This will be the form to create a new deck.</Text>
+          <Text style={styles.header}>Go ahead and make a new deck.</Text>
+          <Text style={styles.label}>Title:</Text>
           <TextInput
-            style={{height: 80, width: 300, backgroundColor: '#ff4400', fontSize: 50}}
+            style={styles.input}
             placeholder="New title"
             value={this.state.titleText}
             onChangeText={(titleText) => this.setState({titleText})}
           />
-          <TouchableOpacity onPress={this.submit}>
-            <Text>NEW DECK NOW!</Text>
+          <TouchableOpacity style={styles.button} onPress={this.submit}>
+            <Text style={styles.buttonText}>NEW DECK NOW!</Text>
           </TouchableOpacity>
         </View>
       </TouchableWithoutFeedback>
@@ -63,8 +65,44 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
+  header: {
+    fontSize: 20,
+    fontFamily: 'Trebuchet MS',
+    paddingBottom: 10,
+    marginTop: 80
+  },
+  label: {
+    fontSize: 30,
+    fontFamily: 'Trebuchet MS',
+    fontWeight: 'bold',
+    transform: [{
+      translateX: -100
+    }]
+  },
+  input: {
+    height: 80,
+    width: 300,
+    backgroundColor: '#ccc',
+    fontSize: 40,
+    paddingLeft: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    borderRadius: 2
+  },
+  button: {
+    backgroundColor: lightBlue,
+    padding: 18,
+    borderWidth: 4,
+    borderColor: darkBlue,
+    borderRadius: 16,
+    marginTop: 12
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 17
+  }
 });
 
 export default connect()(AddDeck)
