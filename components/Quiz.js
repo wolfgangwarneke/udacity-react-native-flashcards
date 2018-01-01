@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import QuizCard from './QuizCard'
 
 class Quiz extends React.Component {
   state = {
@@ -40,13 +41,7 @@ class Quiz extends React.Component {
       case "active":
         const question = this.props.deck.questions[this.state.current]
         return (
-          <View style={styles.container}>
-            <Text>{question.question}</Text>
-            <Text>{question.answer}</Text>
-            <TouchableOpacity onPress={this.nextQuestion}>
-              <Text>NEXT</Text>
-            </TouchableOpacity>
-          </View>
+          <QuizCard question={question} nextQuestion={this.nextQuestion} />
         )
       case "summary":
         return (
