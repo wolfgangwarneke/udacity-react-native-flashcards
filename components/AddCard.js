@@ -11,6 +11,7 @@ import {
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { submitCard } from '../utils/api'
+import { lightBlue, darkBlue } from '../utils/colors'
 import { NavigationActions } from 'react-navigation'
 import ValidationMessage from './ValidationMessage'
 
@@ -49,23 +50,23 @@ class AddCard extends React.Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           {showValidation && <ValidationMessage message="Please fill in both fields." />}
-          <Text>Add a question to {detailDeck}</Text>
-          <Text>QUESTION</Text>
+          <Text style={styles.header}>Add a question to {detailDeck}</Text>
+          <Text style={styles.label}>Question:</Text>
           <TextInput
-            style={{height: 80, width: 300, backgroundColor: '#ff9999', fontSize: 50}}
-            placeholder="New title"
+            style={[styles.input, {backgroundColor: '#ff9999'}]}
+            placeholder="New question?"
             value={this.state.questionText}
             onChangeText={(questionText) => this.setState({questionText})}
           />
-          <Text>ANSWER</Text>
+          <Text style={styles.label}>Answer:</Text>
           <TextInput
-            style={{height: 80, width: 300, backgroundColor: '#ffff44', fontSize: 50}}
-            placeholder="New title"
+            style={[styles.input, {backgroundColor: '#ffff44'}]}
+            placeholder="New answer."
             value={this.state.answerText}
             onChangeText={(answerText) => this.setState({answerText})}
           />
-          <TouchableOpacity onPress={this.submit}>
-            <Text>NEW CARD NOW!</Text>
+          <TouchableOpacity style={styles.button} onPress={this.submit}>
+            <Text style={styles.buttonText}>NEW CARD NOW!</Text>
           </TouchableOpacity>
         </View>
       </TouchableWithoutFeedback>
@@ -78,8 +79,44 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
+  header: {
+    fontSize: 20,
+    fontFamily: 'Trebuchet MS',
+    paddingBottom: 10,
+    marginTop: 25
+  },
+  label: {
+    fontSize: 30,
+    fontFamily: 'Trebuchet MS',
+    fontWeight: 'bold',
+    transform: [{
+      translateX: -100
+    }]
+  },
+  input: {
+    height: 80,
+    width: 300,
+    backgroundColor: '#ccc',
+    fontSize: 40,
+    paddingLeft: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    borderRadius: 2
+  },
+  button: {
+    backgroundColor: lightBlue,
+    padding: 18,
+    borderWidth: 4,
+    borderColor: darkBlue,
+    borderRadius: 16,
+    marginTop: 12
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 17
+  }
 });
 
 function mapStateToProps (state) {
