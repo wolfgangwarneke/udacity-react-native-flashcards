@@ -3,10 +3,8 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
 import { NavigationActions } from 'react-navigation'
-import {
-  clearLocalNotification,
-  setLocalNotification
-} from '../utils/notifications'
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
+import { FontAwesome } from '@expo/vector-icons'
 
 class Quiz extends React.Component {
   state = {
@@ -100,6 +98,7 @@ class Quiz extends React.Component {
           <View style={styles.container}>
             <Text>Welcome to the quiz.</Text>
             <TouchableOpacity onPress={this.start}>
+              <FontAwesome name='play' size={30} color={"green"} />
               <Text>START</Text>
             </TouchableOpacity>
           </View>

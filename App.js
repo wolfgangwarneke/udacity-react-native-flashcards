@@ -67,7 +67,7 @@ const DetailTabs = TabNavigator({
     screen: Quiz,
     navigationOptions: {
       tabBarLabel: 'Start Quiz',
-      tabBarIcon: ({ tintColor }) => <FontAwesome name='play' size={30} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='question-circle' size={40} color={tintColor} />
     },
   },
   AddCard: {

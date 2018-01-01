@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import { FontAwesome } from '@expo/vector-icons'
 
 export default class Quiz extends React.Component {
   state = {
@@ -27,6 +28,7 @@ export default class Quiz extends React.Component {
             <View style={styles.container}>
               <Text>{question.question}</Text>
               <TouchableOpacity onPress={this.flip}>
+                <FontAwesome name='share' size={30} color={"black"} />
                 <Text>FLIP</Text>
               </TouchableOpacity>
             </View>
@@ -37,9 +39,11 @@ export default class Quiz extends React.Component {
               </TouchableOpacity>
               <Text>{question.answer}</Text>
               <TouchableOpacity onPress={() => this.nextAndFlipBack(true)}>
+                <FontAwesome name='check' size={30} color={"green"} />
                 <Text>CORRECT</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => this.nextAndFlipBack(false)}>
+                <FontAwesome name='times' size={30} color={"red"} />
                 <Text>INCORRECT</Text>
               </TouchableOpacity>
             </View>
