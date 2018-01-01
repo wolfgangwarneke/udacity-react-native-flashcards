@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
 import { connect } from 'react-redux'
-import { getDecks } from '../utils/api'
 import { receiveDecks, setDetailDeck } from '../actions'
+import { getDecks } from '../utils/api'
+import { white } from '../utils/colors'
 
 import DeckInfo from './DeckInfo'
 
@@ -26,12 +27,7 @@ class DeckLibrary extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>This will be the decks list view</Text>
-        <TouchableOpacity
-            onPress={() => this.props.navigation.navigate(
-              'DeckDetail'
-            )}
-        ><Text>Go to Deck Detail Nav</Text></TouchableOpacity>
+        <Text style={styles.header}>Quiz Decks</Text>
         {Object.keys(decks).map((key) => {
           const animatedValue = new Animated.Value(0)
           return <Animated.View key={decks[key].title} style={{transform: [{translateX: animatedValue}]}}>
@@ -64,10 +60,13 @@ class DeckLibrary extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: white,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    fontSize: 40
+  }
 });
 
 function mapStateToProps (state) {

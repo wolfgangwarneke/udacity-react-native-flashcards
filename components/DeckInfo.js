@@ -1,14 +1,15 @@
 import React from 'react'
-import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { fadedOrange, orange } from '../utils/colors'
+import { Text, TouchableOpacity, StyleSheet, Animated } from 'react-native'
+import { darkBlue, lightBlue, blue, grey, lightGrey, white } from '../utils/colors'
 
-export default function DeckInfo ({deck, onPress}) {
+export default function DeckInfo ({deck, onPress, bigMode}) {
   if (!deck) deck = {}
   const title = deck.title || "Title not found"
   const questionsAmt = deck.questions.length || 0
+  const eitherStyles = bigMode ? bigStyles : styles
   return (
-    <TouchableOpacity style={styles.infoCard} onPress={onPress}>
-      <Text>{title}</Text>
+    <TouchableOpacity style={eitherStyles.infoCard} onPress={onPress}>
+      <Text style={eitherStyles.infoHeader}>{title}</Text>
       <Text>{questionsAmt} {questionsAmt === 1 ? "question" : "questions"}</Text>
     </TouchableOpacity>
   )
@@ -17,10 +18,29 @@ export default function DeckInfo ({deck, onPress}) {
 const styles = StyleSheet.create({
   infoCard: {
     width: 200,
-    backgroundColor: orange,
-    borderColor: fadedOrange,
+    backgroundColor: lightBlue,
+    borderColor: darkBlue,
     borderWidth: 5,
     marginTop: 20,
     padding: 10
+  },
+  infoHeader: {
+    color: white,
+    fontSize: 40
+  }
+})
+
+const bigStyles = StyleSheet.create({
+  infoCard: {
+    width: 400,
+    backgroundColor: lightBlue,
+    borderColor: darkBlue,
+    borderWidth: 15,
+    marginTop: 20,
+    padding: 30
+  },
+  infoHeader: {
+    color: white,
+    fontSize: 60
   }
 })

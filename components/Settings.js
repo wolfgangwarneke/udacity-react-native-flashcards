@@ -15,7 +15,7 @@ class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>This will be the settings view</Text>
+        <Text style={styles.header}>Settings</Text>
         <Text style={{fontSize: 30}} onPress={this.resetApp}>DELETE ALL THE DECKS</Text>
       </View>
     );
@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    fontSize: 20,
+    textDecorationLine: 'underline'
+  }
 });
 
 export default connect()(Settings)

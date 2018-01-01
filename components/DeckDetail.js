@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
-import { fadedOrange } from '../utils/colors'
+import { white } from '../utils/colors'
 import DeckInfo from './DeckInfo'
 
 class DeckDetail extends React.Component {
@@ -9,7 +9,7 @@ class DeckDetail extends React.Component {
     const { deck } = this.props
     return (
       <View style={styles.container}>
-        <DeckInfo deck={deck} />
+        <DeckInfo deck={deck} bigMode={true} />
       </View>
     );
   }
@@ -18,7 +18,7 @@ class DeckDetail extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: fadedOrange,
+    backgroundColor: white,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -15,6 +15,7 @@ import Quiz from './components/Quiz'
 import AddCard from './components/AddCard'
 
 import { setLocalNotification } from './utils/notifications'
+import { darkBlue, lightBlue, blue, grey, lightGrey } from './utils/colors'
 
 const GeneralTabs = TabNavigator({
   DeckLibrary: {
@@ -40,10 +41,11 @@ const GeneralTabs = TabNavigator({
   },
 }, {
   tabBarOptions: {
-    activeTintColor: 'rgba(0, 0, 255, 1)',
+    activeTintColor: lightGrey,
+    inactiveTintColor: grey,
     style: {
       height: 56,
-      backgroundColor: 'rgba(0, 255, 60, 1)',
+      backgroundColor: darkBlue,
       shadowColor: 'rgba(0, 0, 0, 1)',
       shadowOffset: {
         width: 0,
@@ -79,10 +81,11 @@ const DetailTabs = TabNavigator({
   },
 }, {
   tabBarOptions: {
-    activeTintColor: 'rgba(140, 100, 0, 0.8)',
+    activeTintColor: lightGrey,
+    inactiveTintColor: grey,
     style: {
       height: 56,
-      backgroundColor: 'rgba(40, 140, 200, 1)',
+      backgroundColor: darkBlue,
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -96,14 +99,20 @@ const DetailTabs = TabNavigator({
 
 const MainNavigator = StackNavigator({
   General: {
-    screen: GeneralTabs
+    screen: GeneralTabs,
+    navigationOptions: {
+      headerTintColor: 'rgba(200, 100, 50, 1)',
+      headerStyle: {
+        backgroundColor: darkBlue
+      }
+    }
   },
   DeckDetail: {
     screen: DetailTabs,
     navigationOptions: {
       headerTintColor: 'rgba(200, 100, 50, 1)',
       headerStyle: {
-        backgroundColor: 'rgba(100, 200, 50, 1)'
+        backgroundColor: darkBlue
       }
     }
   }
