@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   return {
-    deck: state.decks[state.detailDeck]
+    deck: state.decks[state.detailDeck] || {title: 'No deck found?', questions: []}
   }
 }
 export default connect(

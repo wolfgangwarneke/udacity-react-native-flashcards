@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet, Animated } from 'react-native'
 import { darkBlue, lightBlue, blue, grey, lightGrey, white } from '../utils/colors'
 
 export default function DeckInfo ({deck, onPress, bigMode}) {
-  if (!deck) deck = {}
+  if (!deck) deck = {questions: []}
   const title = deck.title || "Title not found"
   const questionsAmt = deck.questions.length || 0
   const eitherStyles = bigMode ? bigStyles : styles

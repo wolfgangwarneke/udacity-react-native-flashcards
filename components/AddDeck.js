@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux'
-import { addDeck } from '../actions'
+import { addDeck, setDetailDeck } from '../actions'
 import { submitDeck } from '../utils/api'
 import { NavigationActions } from 'react-navigation'
 import ValidationMessage from './ValidationMessage'
@@ -28,9 +28,12 @@ class AddDeck extends React.Component {
     // Save to 'DB'
     submitDeck(deck)
 
-    // navigate back
+    // set and navigate to detail deck with new deck
+    const { dispatch } = this.props
+    dispatch(setDetailDeck(deck.title))
     Keyboard.dismiss()
-    this.props.navigation.dispatch(NavigationActions.back())
+    this.props.navigation.navigate('DeckLibrary') // reset home tab for when user goes back to general tabs
+    this.props.navigation.navigate('DeckDetail')
   }
   render() {
     const { dispatch } = this.props
