@@ -82,7 +82,6 @@ class Quiz extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {
               this.setState({state: "home"})
-              //TODO navigate back to info tab
               this.props.navigation.dispatch(NavigationActions.back())
             }}>
               <Text>Back to card detail</Text>

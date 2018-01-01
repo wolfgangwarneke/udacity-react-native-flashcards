@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-nativ
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { submitCard } from '../utils/api'
+import { NavigationActions } from 'react-navigation'
 
 class AddCard extends React.Component {
   state = {
@@ -21,6 +22,9 @@ class AddCard extends React.Component {
 
     // Save to 'DB'
     submitCard(newCard, detailDeck)
+
+    // navigate back
+    this.props.navigation.dispatch(NavigationActions.back())
   }
   render() {
     const { dispatch, detailDeck } = this.props
