@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView } from 'react-native';
 import { connect } from 'react-redux'
 import { receiveDecks, setDetailDeck } from '../actions'
 import { getDecks } from '../utils/api'
@@ -24,7 +24,7 @@ class DeckLibrary extends React.Component {
     const { dispatch } = this.props
 
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.header}>Quiz Decks</Text>
         {Object.keys(decks).map((key) => {
           const animatedValue = new Animated.Value(0)
@@ -50,17 +50,17 @@ class DeckLibrary extends React.Component {
             />
           </Animated.View>
         })}
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    paddingVertical: 15,
     backgroundColor: white,
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
   },
   header: {
     fontSize: 40
