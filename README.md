@@ -15,19 +15,20 @@ If you would like to check out this project for grading purposes or otherwise...
 * Run `npm install start` on the command line to install dependencies and boot Expo
 * Scan that lovely QR code and you'll be studying in a *flash*
 
-### Notes to Reviewer
+### Notes to Udacity Reviewer
 
 ##### Device Testing #####
-_This APP was testing in Expo on a physical iPhone 6 Plus and a physical Samsung Galaxy S5. Only portrait mode was tested for these devices and at this point this app is intended to function as portrait only._
+This APP was testing in Expo on a physical iPhone 6 Plus and a physical Samsung Galaxy S5. Only portrait mode was tested for these devices and at this point this app is intended to function as portrait only.
 
 ##### How to test the notifications #####
-_I'm sure you've had to tweak many similar setups, so you will know what to do, but to be extra sure: if you'd like to setup notifications, go into `/utils/notifications.js` and alter the relevant constants._
+I'm sure you've had to tweak many similar setups, so you will know what to do, but to be extra sure: if you'd like to setup notifications, go into `/utils/notifications.js` and alter the relevant constants.
+Also, there is a a button on the `Settings` component which clears out the local notification, which may be useful for you.
 
 ##### *A semantic note* #####
-_My quiz view *technically* starts after the quiz begins. The view with the instructions and button to start the quiz is a *quiz loading* view rather than the quiz view itself. The instructions were deemed necessary by test users who could not easily recognize what the app was for or how to use it and thusly added for clarity._
+My quiz view *technically* starts after the quiz begins. The view with the instructions and button to start the quiz is a *quiz loading* or `PreQuiz` view rather than the quiz view itself. The instructions were deemed necessary by test users who could not easily recognize what the app was for or how to use it and thusly added for clarity.
 
-##### Meta Data... #####
-_Meta data for production is NOT included in this app, because there was nothing specifying wether there should be or not. At this point, this app exists in a state of prototypal development!_
+##### About that Meta Data... #####
+Meta data for production is NOT included in this app, because there was nothing specifying wether there should be or not. At this point, this app exists in a state of prototypal development!
 
 
 ### Prerequisites
@@ -44,20 +45,29 @@ You need Expo in your life. [Seriously.](https://expo.io/)
 
 ### Usage
 
-TODO finish usage section
+As a user you can:
+* Receive reminder notifications at 8pm!
+* Create a new deck
+* Create more decks
+* Delete all of the decks at once
+* Add questions/answer pairs to the decks as *cards*
+* Take a quiz of all the questions in a deck in randomized order
+* Receive feedback while taking the quiz to know how many questions are left
+* Receive feedback at end of quiz to the amount of correct questions and percentage.
 
 ### Features
 
 * Nice, blue colors.
-TODO finish features section
+* Decent UX (but it could be a lot better)
+* Local storage!
 
 ## Built With
 
-* [UdaciFitness](https://???) - Used notification functions from the UdaciFitness example project by [Tyler McGinniss](http://???)
+* [UdaciFitness](https://github.com/udacity/reactnd-UdaciFitness-complete/) - Notification functions from the UdaciFitness example project by [Tyler McGinniss](https://github.com/tylermcginnis)
 * [React](https://github.com/facebook/react) - JavaScript UI framework
-* [React Native](https://???) - Cross platform mobile apps with React!
-* [Create React Native App](https://???) - Tool to bootstrap a simple React Native boilerplate app
-* [React Navigation](https://???) - Routing tool for React Native mobile apps
+* [React Native](https://facebook.github.io/react-native/) - Cross platform mobile apps with React!
+* [Create React Native App](https://github.com/react-community/create-react-native-app) - Tool to bootstrap simple React Native boilerplate apps
+* [React Navigation](https://reactnavigation.org/) - Routing tool for React Native mobile apps
 
 ## License
 
@@ -86,5 +96,6 @@ SOFTWARE.
 ## Acknowledgments
 Thank you...
 * [Udacity](https://www.udacity.com/)
+* [Tyler McGinniss](https://github.com/tylermcginnis)
 * [React Training](https://www.reacttraining.com/)
 * [Expo](https://expo.io/)
