@@ -12,7 +12,7 @@ Are you tired of getting paper cuts studying for your Spanish exam? Do you want 
 
 If you would like to check out this project for grading purposes or otherwise...
 * Clone project
-* Run `npm install start` on the command line to install dependencies and boot Expo
+* Run `npm install && npm start` on the command line to install dependencies and boot Expo
 * Scan that lovely QR code and you'll be studying in a *flash*
 
 ### Notes to Udacity Reviewer
