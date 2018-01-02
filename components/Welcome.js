@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: darkBlue,
     borderRadius: 16,
-    //marginTop: 30,
     marginBottom: 400 // sloppy background color fix
   },
   buttonText: {

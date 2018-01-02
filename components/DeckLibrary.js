@@ -73,8 +73,7 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: 15,
     backgroundColor: white,
-    alignItems: 'center',
-    //justifyContent: 'center',
+    alignItems: 'center'
   },
   header: {
     fontFamily: fontPicker(),
