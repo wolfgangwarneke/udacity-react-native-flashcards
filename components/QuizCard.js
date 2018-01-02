@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { FontAwesome } from '@expo/vector-icons'
+import { blue } from '../utils/colors'
 
 export default class Quiz extends React.Component {
   state = {
@@ -28,15 +29,15 @@ export default class Quiz extends React.Component {
             <View style={styles.container}>
               <Text style={styles.qAndA}>{question.question}</Text>
               <TouchableOpacity style={styles.row} onPress={this.flip}>
-                <FontAwesome name='share' size={30} color={"black"} />
-                <Text>FLIP</Text>
+                <FontAwesome name='share' size={30} color={blue} />
+                <Text style={styles.flipText}>FLIP</Text>
               </TouchableOpacity>
             </View>
           :
             <View style={styles.container}>
               <TouchableOpacity style={[styles.row, {marginBottom: 25}]} onPress={this.flip}>
-                <FontAwesome name='share' size={30} color={"black"} style={{transform: [{rotate: "180deg"}]}} />
-                <Text>BACK</Text>
+                <FontAwesome name='share' size={30} color={blue} style={{transform: [{rotate: "180deg"}]}} />
+                <Text style={styles.flipText}>BACK</Text>
               </TouchableOpacity>
               <Text style={styles.qAndA}>{question.answer}</Text>
               <View style={styles.row}>
@@ -74,5 +75,9 @@ const styles = StyleSheet.create({
   iconOffset: {
     paddingTop: 8,
     transform: [{ translateX: 25 }]
+  },
+  flipText: {
+    color: blue,
+    marginLeft: 5
   }
 });

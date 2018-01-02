@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { lightBlue, darkBlue, white } from '../utils/colors'
+import { lightBlue, darkBlue, blue, white } from '../utils/colors'
 
 export default function Welcome ({style, navigation}, ...props) {
   return (
     <View>
-      <Text style={style}>WELCOME</Text>
-      <Text style={style}>TO</Text>
-      <Text style={style}>MOBILE</Text>
-      <Text style={style}>FLASHCARDS</Text>
+      <Text style={[style, {marginTop: 8, color: lightBlue}]}>WELCOME</Text>
+      <Text style={[style, {color: lightBlue}]}>TO</Text>
+      <Text style={[style, {color: 'black', fontWeight: 'bold'}]}>MOBILE</Text>
+      <Text style={[style, {color: 'black', fontWeight: 'bold'}]}>FLASHCARDS</Text>
       <TouchableOpacity style={styles.button} onPress={() => {
         navigation.navigate('AddDeck')
       }}>

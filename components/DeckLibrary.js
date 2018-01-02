@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView } from '
 import { connect } from 'react-redux'
 import { receiveDecks, setDetailDeck } from '../actions'
 import { getDecks } from '../utils/api'
-import { white } from '../utils/colors'
+import { white, darkerBlue } from '../utils/colors'
 
 import DeckInfo from './DeckInfo'
 import Welcome from './Welcome'
@@ -28,7 +28,7 @@ class DeckLibrary extends React.Component {
     if (!Object.keys(decks).length) {
       return (
         <View style={styles.container}>
-          <Text style={styles.header}>Mobile Flashcards</Text>
+          <Text style={[styles.header, {color: darkerBlue}]}>Mobile Flashcards</Text>
           <Welcome style={styles.message} navigation={this.props.navigation} />
         </View>
       )

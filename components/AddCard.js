@@ -11,7 +11,7 @@ import {
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { submitCard } from '../utils/api'
-import { lightBlue, darkBlue } from '../utils/colors'
+import { lightBlue, darkBlue, lightGrey, paleBlue } from '../utils/colors'
 import { NavigationActions } from 'react-navigation'
 import ValidationMessage from './ValidationMessage'
 
@@ -53,14 +53,14 @@ class AddCard extends React.Component {
           <Text style={styles.header}>Add a question to {detailDeck}</Text>
           <Text style={styles.label}>Question:</Text>
           <TextInput
-            style={[styles.input, {backgroundColor: '#ff9999'}]}
+            style={[styles.input, {backgroundColor: lightGrey}]}
             placeholder="New question?"
             value={this.state.questionText}
             onChangeText={(questionText) => this.setState({questionText})}
           />
           <Text style={styles.label}>Answer:</Text>
           <TextInput
-            style={[styles.input, {backgroundColor: '#ffff44'}]}
+            style={[styles.input, {backgroundColor: paleBlue}]}
             placeholder="New answer."
             value={this.state.answerText}
             onChangeText={(answerText) => this.setState({answerText})}
@@ -85,15 +85,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Trebuchet MS',
     paddingBottom: 10,
-    marginTop: 25
+    marginTop: 10
   },
   label: {
-    fontSize: 30,
+    fontSize: 26,
     fontFamily: 'Trebuchet MS',
-    fontWeight: 'bold',
-    transform: [{
-      translateX: -100
-    }]
+    color: darkBlue
   },
   input: {
     height: 80,

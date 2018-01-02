@@ -6,7 +6,10 @@ export const black = 'rgba(0, 0, 0, 1)'
 export const lightBlue = '#288CC8'
 export const blue = '#197BBD'
 export const darkBlue = '#125E8A'
-export const paleBlue = '#e0f5ff' // or '#42bff4'
+export const darkerBlue = '#0b3b54'
+export const paleBlue = '#E0F5FF' // or '#42bff4'
 export const darkGrey = '#857C8D'
-export const grey = "#a1a1a9"
+export const grey = "#A1A1A9"
 export const lightGrey = '#C5D5EA'
+
+export const alertOrange = 'orange'

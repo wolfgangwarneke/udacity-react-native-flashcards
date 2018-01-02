@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
 import { NavigationActions } from 'react-navigation'
 import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
-import { lightBlue, darkBlue, white } from '../utils/colors'
+import { lightBlue, blue, darkBlue, white } from '../utils/colors'
 import { FontAwesome } from '@expo/vector-icons'
 
 class Quiz extends React.Component {
@@ -84,8 +84,8 @@ class Quiz extends React.Component {
               this.setState({state: "home"})
               this.props.navigation.dispatch(NavigationActions.back())
             }}>
-              <FontAwesome name='arrow-left' size={30} color={"black"} />
-              <Text style={{paddingLeft: 10}}>Back to card detail</Text>
+              <FontAwesome name='arrow-left' size={30} color={blue} />
+              <Text style={{paddingLeft: 10, color: blue}}>Back to card detail</Text>
             </TouchableOpacity>
           </View>
         )
@@ -96,7 +96,7 @@ class Quiz extends React.Component {
             <Text style={styles.header}>Welcome to the quiz.</Text>
             <TouchableOpacity style={styles.start} onPress={this.start}>
               <View>
-                <FontAwesome style={styles.playIcon} name='play' size={30} color={"green"} />
+                <FontAwesome style={styles.playIcon} name='play' size={30} color={lightBlue} />
                 <Text>START</Text>
               </View>
             </TouchableOpacity>
