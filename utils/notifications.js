@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native'
 import { Notifications, Permissions } from 'expo'
 
 const NOTIFICATION_KEY = 'NOTIFICATION_KEY_GOES_HERE'
-const NOTIFICATION_HOUR = 8 // 8pm
+const NOTIFICATION_HOUR = 20 // 8pm
 const NOTIFICATION_MINUTES = 0
 const NOTIFICATION_TOMORROW_OFFSET = 1
 

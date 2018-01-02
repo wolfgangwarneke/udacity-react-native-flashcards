@@ -52,7 +52,7 @@ class AddDeck extends React.Component {
             onChangeText={(titleText) => this.setState({titleText})}
           />
           <TouchableOpacity style={styles.button} onPress={this.submit}>
-            <Text style={styles.buttonText}>NEW DECK NOW!</Text>
+            <Text style={styles.buttonText}>Create Deck</Text>
           </TouchableOpacity>
         </View>
       </TouchableWithoutFeedback>

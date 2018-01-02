@@ -69,7 +69,7 @@ class AddCard extends React.Component {
             onChangeText={(answerText) => this.setState({answerText})}
           />
           <TouchableOpacity style={styles.button} onPress={this.submit}>
-            <Text style={styles.buttonText}>NEW CARD NOW!</Text>
+            <Text style={styles.buttonText}>SUBMIT</Text>
           </TouchableOpacity>
         </View>
       </TouchableWithoutFeedback>

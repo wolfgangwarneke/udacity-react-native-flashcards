@@ -15,7 +15,7 @@ import DeckDetail from './components/DeckDetail'
 import Quiz from './components/Quiz'
 import AddCard from './components/AddCard'
 
-import { setLocalNotification } from './utils/notifications'
+import { setLocalNotification, clearLocalNotification } from './utils/notifications'
 import { darkBlue, lightBlue, blue, grey, lightGrey, paleBlue, white } from './utils/colors'
 
 const GeneralTabs = TabNavigator({
@@ -129,6 +129,7 @@ const MainNavigator = StackNavigator({
 
 export default class App extends React.Component {
   componentDidMount() {
+    //clearLocalNotification()
     setLocalNotification()
   }
   render() {
