@@ -50,6 +50,7 @@ class Quiz extends React.Component {
     const quizLength = this.state.history.length
     return (correctAmt/quizLength*100).toFixed(1) + "%"
   }
+
   render() {
     if (this.props.deck.questions.length === 0) {
       return (
@@ -60,6 +61,7 @@ class Quiz extends React.Component {
     }
     switch (this.state.state) {
       case "active":
+        // 'actual' quiz view
         const question = this.props.deck.questions[this.state.current]
         const questionOrder = this.state.history.length
         const questionsTotal = this.props.deck.questions.length
@@ -72,6 +74,7 @@ class Quiz extends React.Component {
           />
         )
       case "summary":
+        // end of quiz view
         return (
           <View style={styles.container}>
             <Text style={styles.summaryTextTop}>You have now finished the quiz.</Text>
@@ -91,6 +94,7 @@ class Quiz extends React.Component {
         )
       case "home":
       default:
+        // pre quiz view
         return (
           <View style={styles.container}>
             <Text style={styles.header}>Welcome to the quiz.</Text>

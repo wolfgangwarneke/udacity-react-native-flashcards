@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, StyleSheet, Animated } from 'react-native'
 import { darkBlue, lightBlue, blue, grey, lightGrey, white } from '../utils/colors'
 
-export default function DeckInfo ({deck, onPress, bigMode}) {
+export default function DeckInfo ({deck, onPress, bigMode, bonusContent}) {
   if (!deck) deck = {questions: []}
   const title = deck.title || "Title not found"
   const questionsAmt = deck.questions.length || 0
@@ -11,6 +11,7 @@ export default function DeckInfo ({deck, onPress, bigMode}) {
     <TouchableOpacity style={eitherStyles.infoCard} onPress={onPress}>
       <Text style={eitherStyles.infoHeader}>{title}</Text>
       <Text style={eitherStyles.questionText}>{questionsAmt} {questionsAmt === 1 ? "question" : "questions"}</Text>
+      {bonusContent}
     </TouchableOpacity>
   )
 }
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 const bigStyles = StyleSheet.create({
   infoCard: {
     width: 400,
-    height: 400,
+    height: 450,
     alignItems: 'center',
     backgroundColor: lightBlue,
     borderColor: darkBlue,
