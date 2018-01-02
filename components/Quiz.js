@@ -57,6 +57,12 @@ class Quiz extends React.Component {
       return (
         <View style={styles.container}>
           <Text>There are no questions in this deck yet.</Text>
+          <TouchableOpacity style={styles.button} onPress={() => {
+              this.props.navigation.navigate('AddCard')
+            }}
+          >
+            <Text style={styles.buttonText}>Go add one!</Text>
+          </TouchableOpacity>
         </View>
       )
     }
