@@ -3,9 +3,11 @@ import { AsyncStorage } from 'react-native'
 import { Notifications, Permissions } from 'expo'
 
 const NOTIFICATION_KEY = 'NOTIFICATION_KEY_GOES_HERE'
-const NOTIFICATION_HOUR = 20 // 8pm
-const NOTIFICATION_MINUTES = 0
-const NOTIFICATION_TOMORROW_OFFSET = 1
+
+// relevant constants for tinkering for notifcation testing
+const NOTIFICATION_HOUR = 20 // 8pm TESTING: set this to current hour
+const NOTIFICATION_MINUTES = 0 // TESTING: set this to a few minutes in the future
+const NOTIFICATION_TOMORROW_OFFSET = 1 // TESTING: set this to 0, run the app, and DON'T take a quiz!
 
 export function clearLocalNotification () {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)

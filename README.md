@@ -17,6 +17,16 @@ If you would like to check out this project for grading purposes or otherwise...
 
 ### Notes to Reviewer
 
+_Testing_
+This APP was testing in Expo on a physical iPhone 6 Plus and a physical Samsung Galaxy S5.
+
+_How to test the notifications_
+I'm sure you've had to tweak many similar setups, so you will know what to do, but to be extra sure: if you'd like to setup notifications, go into `/utils/notifications.js` and alter the relevant constants.
+
+_*A semantic note*_
+My quiz view *technically* starts after the quiz begins. The view with the instructions and button to start the quiz is a *quiz loading* view rather than the quiz view itself. The instructions were deemed necessary by test users who could not easily recognize what the app was for or how to use it and thusly added for clarity.
+
+
 ### Prerequisites
 
 ```
@@ -36,10 +46,11 @@ TODO finish usage section
 ### Features
 
 * Nice, blue colors.
-TO finish features section
+TODO finish features section
 
 ## Built With
 
+* [UdaciFitness](https://???) - Used notification functions from the UdaciFitness example project by [Tyler McGinniss](http://???)
 * [React](https://github.com/facebook/react) - JavaScript UI framework
 * [React Native](https://???) - Cross platform mobile apps with React!
 * [Create React Native App](https://???) - Tool to bootstrap a simple React Native boilerplate app
