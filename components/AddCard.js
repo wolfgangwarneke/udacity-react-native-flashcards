@@ -41,6 +41,9 @@ class AddCard extends React.Component {
 
     // navigate back
     this.props.navigation.dispatch(NavigationActions.back())
+
+    // dismiss Keyboard
+    Keyboard.dismiss()
   }
   render() {
     const { dispatch, detailDeck } = this.props
