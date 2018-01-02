@@ -1,4 +1,6 @@
 // functions taken from UdaciFitness example app
+// https://github.com/udacity/reactnd-UdaciFitness-complete/
+// by Tyler McGinniss - https://github.com/tylermcginnis
 import { AsyncStorage } from 'react-native'
 import { Notifications, Permissions } from 'expo'
 
