@@ -1,6 +1,6 @@
 # _Mobile Flashcards_
 
-#### _A mobile flashcard study app for Udacity's React Nanodegree, 1.1.2018_
+#### _A mobile flashcard study app for Udacity's React Nanodegree, 1.2.2018_
 
 #### By _**Wolfgang Warneke**_
 
