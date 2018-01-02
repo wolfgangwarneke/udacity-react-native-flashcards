@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addDeck, setDetailDeck } from '../actions'
 import { submitDeck } from '../utils/api'
 import { lightGrey, darkBlue, lightBlue } from '../utils/colors'
+import fontPicker from '../utils/fontPicker'
 import { NavigationActions } from 'react-navigation'
 import ValidationMessage from './ValidationMessage'
 
@@ -69,13 +70,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     paddingBottom: 10,
     marginTop: 80
   },
   label: {
     fontSize: 30,
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     fontWeight: 'bold',
     transform: [{
       translateX: -100

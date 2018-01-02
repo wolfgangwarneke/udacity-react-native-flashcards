@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 import { white } from '../utils/colors'
+import fontPicker from '../utils/fontPicker'
 import DeckInfo from './DeckInfo'
 
 const styles = StyleSheet.create({
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
   },
   moreContent: {
     fontSize: 24,
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     color: white,
     marginTop: 25
   }

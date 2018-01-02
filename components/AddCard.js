@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { submitCard } from '../utils/api'
 import { lightBlue, darkBlue, lightGrey, paleBlue } from '../utils/colors'
+import fontPicker from '../utils/fontPicker'
 import { NavigationActions } from 'react-navigation'
 import ValidationMessage from './ValidationMessage'
 
@@ -86,13 +87,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     paddingBottom: 10,
     marginTop: 10
   },
   label: {
     fontSize: 26,
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     color: darkBlue
   },
   input: {

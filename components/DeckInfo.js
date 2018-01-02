@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet, Animated } from 'react-native'
 import { darkBlue, lightBlue, blue, grey, lightGrey, white } from '../utils/colors'
+import fontPicker from '../utils/fontPicker'
 
 export default function DeckInfo ({deck, onPress, bigMode, bonusContent}) {
   if (!deck) deck = {questions: []}
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   infoHeader: {
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     color: white,
     fontSize: 36
   },
@@ -48,7 +49,7 @@ const bigStyles = StyleSheet.create({
     padding: 30
   },
   infoHeader: {
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     color: white,
     fontSize: 60,
     marginBottom: 15

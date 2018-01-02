@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { receiveDecks, setDetailDeck } from '../actions'
 import { getDecks } from '../utils/api'
 import { white, darkerBlue } from '../utils/colors'
+import fontPicker from '../utils/fontPicker'
 
 import DeckInfo from './DeckInfo'
 import Welcome from './Welcome'
@@ -76,11 +77,11 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   header: {
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     fontSize: 40
   },
   message: {
-    fontFamily: 'Trebuchet MS',
+    fontFamily: fontPicker(),
     fontSize: 30,
     left: -55,
     paddingTop: 16
