@@ -30,14 +30,14 @@ export default class Quiz extends React.Component {
               <Text style={styles.qAndA}>{question.question}</Text>
               <TouchableOpacity style={styles.row} onPress={this.flip}>
                 <FontAwesome name='share' size={30} color={blue} />
-                <Text style={styles.flipText}>FLIP</Text>
+                <Text style={styles.flipText}>FLIP to answer</Text>
               </TouchableOpacity>
             </View>
           :
             <View style={styles.container}>
               <TouchableOpacity style={[styles.row, {marginBottom: 25}]} onPress={this.flip}>
                 <FontAwesome name='share' size={30} color={blue} style={{transform: [{rotate: "180deg"}]}} />
-                <Text style={styles.flipText}>FLIP BACK</Text>
+                <Text style={styles.flipText}>FLIP BACK to question</Text>
               </TouchableOpacity>
               <Text style={styles.qAndA}>{question.answer}</Text>
               <View style={styles.row}>
