@@ -17,14 +17,17 @@ If you would like to check out this project for grading purposes or otherwise...
 
 ### Notes to Reviewer
 
-##### Testing #####
-_This APP was testing in Expo on a physical iPhone 6 Plus and a physical Samsung Galaxy S5._
+##### Device Testing #####
+_This APP was testing in Expo on a physical iPhone 6 Plus and a physical Samsung Galaxy S5. Only portrait mode was tested for these devices and at this point this app is intended to function as portrait only._
 
 ##### How to test the notifications #####
 _I'm sure you've had to tweak many similar setups, so you will know what to do, but to be extra sure: if you'd like to setup notifications, go into `/utils/notifications.js` and alter the relevant constants._
 
 ##### *A semantic note* #####
 _My quiz view *technically* starts after the quiz begins. The view with the instructions and button to start the quiz is a *quiz loading* view rather than the quiz view itself. The instructions were deemed necessary by test users who could not easily recognize what the app was for or how to use it and thusly added for clarity._
+
+##### Meta Data... #####
+_Meta data for production is NOT included in this app, because there was nothing specifying wether there should be or not. At this point, this app exists in a state of prototypal development!_
 
 
 ### Prerequisites

@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import QuizCard from './QuizCard'
+import PreQuiz from './PreQuiz'
 import { NavigationActions } from 'react-navigation'
 import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
 import { lightBlue, blue, darkBlue, white } from '../utils/colors'
@@ -96,17 +97,7 @@ class Quiz extends React.Component {
       default:
         // pre quiz view
         return (
-          <View style={styles.container}>
-            <Text style={styles.header}>Welcome to the quiz.</Text>
-            <Text style={styles.instructions}>- Test out your familiarity with this deck by guessing the answer before you flip the card over and then keep tabs on how you did!
-            </Text>
-            <TouchableOpacity style={styles.start} onPress={this.start}>
-              <View>
-                <FontAwesome style={styles.playIcon} name='play' size={30} color={lightBlue} />
-                <Text>START</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+          <PreQuiz onPress={this.start} styles={styles} />
         )
     }
   }
