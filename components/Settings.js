@@ -21,7 +21,7 @@ class Settings extends React.Component {
           <Text style={styles.buttonText}>RESET DECKS</Text>
         </TouchableOpacity>
         <Text style={styles.warning}>WARNING: this can NOT be undone.</Text>
-        <TouchableOpacity style={[styles.button, {backgroundColor: lightBlue}]} onPress={clearNotification}>
+        <TouchableOpacity style={[styles.button, {backgroundColor: lightBlue}]} onPress={clearLocalNotification}>
           <Text style={[styles.buttonText, {fontSize: 19}]}>CLEAR NOTIFICATION</Text>
         </TouchableOpacity>
       </View>
