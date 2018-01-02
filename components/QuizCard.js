@@ -37,17 +37,17 @@ export default class Quiz extends React.Component {
             <View style={styles.container}>
               <TouchableOpacity style={[styles.row, {marginBottom: 25}]} onPress={this.flip}>
                 <FontAwesome name='share' size={30} color={blue} style={{transform: [{rotate: "180deg"}]}} />
-                <Text style={styles.flipText}>BACK</Text>
+                <Text style={styles.flipText}>FLIP BACK</Text>
               </TouchableOpacity>
               <Text style={styles.qAndA}>{question.answer}</Text>
               <View style={styles.row}>
-                <TouchableOpacity style={{marginRight: 10}} onPress={() => this.nextAndFlipBack(true)}>
+                <TouchableOpacity style={{marginRight: 15}} onPress={() => this.nextAndFlipBack(true)}>
                   <FontAwesome style={styles.iconOffset} name='check' size={30} color={"green"} />
-                  <Text>CORRECT</Text>
+                  <Text>Got it!</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{marginLeft: 10}} onPress={() => this.nextAndFlipBack(false)}>
+                <TouchableOpacity style={{marginLeft: 15}} onPress={() => this.nextAndFlipBack(false)}>
                   <FontAwesome style={styles.iconOffset} name='times' size={30} color={"red"} />
-                  <Text>INCORRECT</Text>
+                  <Text>Not yet</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -70,11 +70,13 @@ const styles = StyleSheet.create({
   },
   qAndA: {
     fontSize: 30,
-    marginBottom: 20
+    marginBottom: 20,
+    paddingLeft: 10,
+    paddingRight: 10
   },
   iconOffset: {
     paddingTop: 8,
-    transform: [{ translateX: 25 }]
+    transform: [{ translateX: 12 }]
   },
   flipText: {
     color: blue,

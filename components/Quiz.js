@@ -94,6 +94,8 @@ class Quiz extends React.Component {
         return (
           <View style={styles.container}>
             <Text style={styles.header}>Welcome to the quiz.</Text>
+            <Text style={styles.instructions}>- Test out your familiarity with this deck by guessing the answer before you flip the card over and then keep tabs on how you did!
+            </Text>
             <TouchableOpacity style={styles.start} onPress={this.start}>
               <View>
                 <FontAwesome style={styles.playIcon} name='play' size={30} color={lightBlue} />
@@ -150,6 +152,12 @@ const styles = StyleSheet.create({
   playIcon: {
     transform: [{ translateX: 10 }],
     paddingBottom: 10
+  },
+  instructions: {
+    fontSize: 18,
+    lineHeight: 30,
+    padding: 20,
+    marginBottom: 10
   }
 });
 
